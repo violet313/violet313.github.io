@@ -6,7 +6,7 @@
         //intro: just a simple drop-down panel
         "simple-js":
         {
-            url:          "./assets/simple.dropdown.panel.js",
+            url:          "https://violet313.github.io/assets/simple.dropdown.panel.js",
             highlight:    [51,52,53,54,55,56,57,58,78,79,80,81, 85,86,87,88,89, 111],
             brush:        "js",
         },
@@ -14,7 +14,7 @@
         //intro: just a simple drop-down panel
         "simple-snip-js":
         {
-            url:          "./assets/simple.dropdown.panel.snip.js",
+            url:          "https://violet313.github.io/assets/simple.dropdown.panel.snip.js",
             highlight:    [78,79,80,81, 85,86,87,88,89],
             "first-line": 64,
             brush:        "js",
