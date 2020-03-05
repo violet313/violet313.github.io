@@ -1,0 +1,19 @@
+.dynamic-cell-detail
+{
+    z-index:            10000;
+    position:           absolute;
+    background-color:   #F4DFFA;
+    margin:             0;
+    padding:            0;
+    width:              100%;
+    display:            table;
+}
+
+.dynamic-cell-detail > :first-child
+{
+    display:            table-cell;
+    vertical-align:     middle;
+    text-align:         center;
+    font-size:          12px;
+    line-height:        13px;
+}

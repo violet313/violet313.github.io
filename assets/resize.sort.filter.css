@@ -1,0 +1,160 @@
+::-webkit-scrollbar
+{
+    width:              12px;
+    background-color:   #B9BACC;
+}
+::-webkit-scrollbar-track
+{
+    color:              #fff;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius:      10px;
+}
+::-webkit-scrollbar-thumb
+{
+    color:              #96A9BB;
+    border-radius:      10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+
+body
+{
+    font-family:        Arial, Helvetica, sans-serif;
+    background-color:   #131313;
+    position:           absolute;
+    top:                5px;
+    bottom:             5px;
+    left:               5px;
+    right:              5px;
+}
+
+.settings-filter-ctr
+{
+    margin:             0 auto;
+    border:             1px solid #19264E;
+    font-size:          12px;
+    width:              300px;
+    background-color:   rgba(22, 22, 128, 0.1);
+}
+.settings-filter-ctr table                 {margin:0 auto;}
+.settings-filter-ctr tr                    {height:40px;}
+.settings-filter-ctr td span               {width:60px; padding-right:5px; color:#2595FD;}
+.settings-filter-ctr td input[type=range]  {vertical-align:middle; width:100px;}
+.settings-filter-ctr td input[type=number] {width:50px;}
+
+
+#oh-my-griddy-aunt
+{
+    position:         absolute;
+    top:              93px;
+    left:             0px;
+    right:            0px;
+    bottom:           0px;
+    margin:           auto;
+    font-size:        12px;
+    background-color: #ECEEE9;
+}
+
+.toggle
+{
+    height:           16px;
+    width:            16px;
+    display:          inline-block;
+}
+.toggle.expand
+{
+    background: url(http://tinyurl.com/k9ejb3a/expand.gif) no-repeat center center;
+}
+
+.toggle.collapse
+{
+    background: url(http://tinyurl.com/k9ejb3a/collapse.gif) no-repeat center center;
+}
+
+
+/*--- generic slickgrid padding pollyfill  ----------------------*/
+
+.dynamic-row
+{
+    padding-bottom: 1px !important;
+}
+
+.slick-cell.active
+{
+    border-color:  transparent;
+    border-right:  1px dotted silver;
+    border-bottom: 1px solid silver;
+}
+
+.dynamic-row-padding
+{
+}
+
+.dynamic-row-padding-inner
+{
+    border-bottom: none;
+}
+
+.dynamic-row-padding-inner div.slick-cell
+{
+    border-bottom: none;
+}
+
+
+.dynamic-row-padding-last
+{
+}
+
+.dynamic-row-parent
+{
+}
+
+.dynamic-row-parent div.slick-cell
+{
+    border-bottom: none;
+}
+
+
+div.dynamic-row-yin
+{
+    background: #fff !important;
+}
+
+div.dynamic-row-yang
+{
+    background: #FAFAFA !important;
+}
+
+.dynamic-cell
+{
+    z-index:        1         !important;
+    overflow:       visible   !important;
+    padding:        0px       !important;
+    margin-left:    -2px      !important;
+    margin-top:     1px       !important;
+    height:        100%       !important;
+}
+
+.dynamic-cell > :first-child
+{
+    overflow:       hidden    !important;
+    text-overflow:  ellipsis  !important;
+    margin-top:     0px;
+    padding-left:   5px;
+    padding-right:  4px;
+}
+
+
+/*--- custom slickgrid detail content -------------------*/
+
+.dynamic-cell-detail
+{
+    margin:  0;
+    padding: 0;
+    width:   100%;
+}
+
+.dynamic-cell-detail svg
+{
+    width:  100%;
+    height: 100%;
+}

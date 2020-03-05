@@ -1,0 +1,752 @@
+::-webkit-scrollbar       { width: 12px; background-color:#B9BACC; }
+::-webkit-scrollbar-track { color: #fff; -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); border-radius: 10px;  }
+::-webkit-scrollbar-thumb { color: #96A9BB; border-radius: 10px;  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); }
+
+@font-face
+{
+    font-family:  'whiterabbit';
+    src:          url('whitrabt.eot') format('embedded-opentype');
+    src:          url('whitrabt.eot?#iefix') format('embedded-opentype'),
+                  url('whitrabt.svg') format('svg'),
+                  url('whitrabt.woff') format('woff'),
+                  url('whitrabt.ttf') format('truetype');
+    font-weight:  normal;
+    font-style:   normal;
+}
+
+.whiterabbit
+{
+    font-family: 'whiterabbit';
+    color: green;
+}
+
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+    background: #131313 url('background-xhatch.png') repeat fixed top left;
+    font-size: 75%;
+}
+
+ul
+{
+    padding-left:1.2em;
+    list-style-type: square;
+}
+
+ul.numered-list
+{
+    padding-left:1.4em;
+    list-style-type: decimal;
+}
+
+a
+{
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    cursor: hand;
+}
+
+b
+{
+    background-color: rgba(224, 182, 240, 0.21);
+    color: #fff;
+    font-weight: bold;
+}
+
+
+code
+{
+    font-family: 'whiterabbit';
+    color: #06A806
+}
+
+i { font-style: italic; }
+em{ font-style: normal; color: rgba(153, 189, 236, 0.81);}
+
+
+
+/*----tweek the midnight theme a little-------------------*/
+.syntaxhighlighter { background-color: black !important; }
+
+.syntaxhighlighter .line.alt1,
+.syntaxhighlighter .line.alt2 { background-color: rgba(15, 25, 42, 0) !important; }
+.syntaxhighlighter .keyword { color: #EC8B0F !important; }
+.syntaxhighlighter .value {color: #EEE47D !important; }
+
+.syntaxhighlighter .line.highlighted.alt1,
+.syntaxhighlighter .line.highlighted.alt2 { background-color: rgba(29, 35, 41, 0.42) !important; }
+.syntaxhighlighter .gutter .line.highlighted
+{
+    background-color: rgba(67, 90, 95, 0.27) !important;
+    color: #EDEFF1 !important;
+}
+
+
+/*--------------------------------------------------------
+ * splash content css
+ * ------------------------------------------------------*/
+
+#uh-oh
+{
+    display:table;
+    position:absolute;
+    top:5%;
+    left:5%;
+    right:5%;
+    bottom:5%;
+    width:90%;
+    height:90%;
+    overflow: hidden;
+}
+
+#uh-oh > div
+{
+    display:table-cell;
+    vertical-align:middle;
+    text-align:center;
+    height:100%;
+    font-size: 3em;
+    line-height: 1.5em;
+}
+
+#uh-oh > div > :first-child,
+#uh-oh > div > :last-child
+{
+    padding:    0.6em;
+    font-size:  0.8em;
+}
+
+#uh-oh span
+{
+    border:           1px solid rgba(213, 221, 14, 0.62);
+    background-color: rgba(107, 65, 240, 0.08);
+    border-radius:    0.15em;
+    padding:          0.2em;
+}
+
+
+#splash
+{
+    display:table;
+    position:absolute;
+    top:5%;
+    left:5%;
+    right:5%;
+    bottom:5%;
+    width:90%;
+    height:90%;
+    overflow: hidden;
+}
+
+
+.stuff-row
+{
+    display:table-row;
+}
+
+.stuff-cell
+{
+    display:table-cell;
+    height:100%;
+}
+
+#blurb
+{
+    font-size:1.6em;
+
+    color: white;
+    margin:0 auto;
+    text-align:center;
+    margin-bottom:30px;
+    margin-top:50px;
+    height:1px;
+}
+
+.blurb-details
+{
+    color: green;
+    font-size:0.8em;
+    padding-top: 0.4em;
+}
+
+
+#grid-ctr /* splash grid container */
+{
+    position:relative;
+    height:100%;
+    max-height:600px;
+}
+
+
+
+/*--------------------------------------------------------
+ * craft content css
+ * ------------------------------------------------------*/
+
+.navbar
+{
+    box-shadow:     1px 1px 1px #131313;
+    border-bottom:  1px solid #000500;
+    margin-left:    -5%;
+    margin-right:   -5%;
+    margin-bottom:  -15px;
+}
+
+.nav-item
+{
+    color: rgba(173, 204, 190, 0.78);
+}
+
+ul.nav
+{
+    text-align:       left;
+    padding:          0;
+    list-style-type:  none;
+}
+
+ul.nav li
+{
+    text-align:       center;
+    display:          inline;
+    padding-left:     0.2em;
+    padding-right:    0.2em;
+    margin-right:     0.2em;
+    font-size:        2.2em;
+    background:       -webkit-radial-gradient(circle, #1F3329, #010904);
+    background:          -moz-radial-gradient(circle, #1F3329, #010904);
+    border:           1px solid #272B3F;
+    border-radius:    0.2em;
+
+}
+
+.skullie {  }
+.content {  }
+
+
+.nav-item:hover,
+.nav-item:focus
+{
+    text-decoration:  none;
+    cursor:           pointer;
+    cursor:           hand;
+    color:            rgba(173, 204, 190, 0.78);
+    color:            #A5D8C1;
+    border-color:     rgb(211, 39, 7);
+}
+
+span.skullie { font-size:1.2em; }
+
+span.skullie:hover,
+span.skullie:focus
+{
+    color: rgba(240, 117, 20, 0.78)
+}
+
+#intro { }
+
+
+#code-steps
+{
+    margin: 0 auto;
+    width: 60%;
+    max-width: 1000px;
+    min-width: 400px;
+}
+
+.section
+{
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #070A07;
+    min-width: 350px;
+}
+
+.grid-block /* generic example grid container */
+{
+    margin-top:       20px;
+    margin-bottom:    20px;
+    position:         relative;
+    min-height:       100px;
+    height:           400px;
+    height:           50vh;
+    width:            100%;
+    background-color: none;
+}
+
+.code-block
+{
+    padding:          0;
+    margin-top:       15px;
+    margin-bottom:    15px;
+    max-width:        1000px;
+    min-height:       50px;
+    max-height:       500px;
+    max-height:       80vh;
+    overflow:         auto;
+    background-color: black !important;
+}
+
+.code-block .syntaxhighlighter
+{
+    overflow:       visible!important;
+    padding:        0!important;
+    padding-top:    15px!important;
+    padding-bottom: 15px!important;
+    margin:         0!important;
+    width:          1000px;
+    font-size:      0.8em!important;
+}
+
+.explain
+{
+    margin-top:     30px;
+    margin-bottom:  30px;
+    color:          rgb(223, 199, 199);
+    font-size:      1.2em;
+    line-height:    1.3em;
+}
+
+.explain h2
+{
+    color:      rgb(240, 228, 247);
+    text-align: left;
+}
+
+.side-note
+{
+    font-size:  0.9em;
+    font-style: italic;
+}
+
+#show-details
+{
+    color:  rgba(185, 176, 218, 0.78);
+    cursor: pointer;
+    cursor: hand;
+}
+
+a.link0:link,
+a.link0:visited
+{
+    background-color: rgba(224, 182, 240, 0.21);
+    font-weight: bold;
+    color: #fff;
+}
+a.link0:hover,
+a.link0:focus         { color: rgba(41, 129, 241, 0.78); }
+
+a.link1:link,
+a.link1:visited       { color: rgba(185, 176, 218, 0.78); }
+
+#spaghetti-plate:hover,
+#spaghetti-plate:focus,
+#show-details:hover,
+#show-details:focus,
+a.link1:hover,
+a.link1:focus         { color: rgba(41, 129, 241, 0.78); }
+
+a.link2:link,
+a.link2:visited       { color: rgba(230, 133, 10, 0.78); text-decoration: underline;}
+a.link2:hover,
+a.link2:focus         { color: rgba(41, 129, 241, 0.78); text-decoration: underline;}
+
+a.link3
+{
+    font-family: 'whiterabbit';
+}
+a.link3:link,
+a.link3:visited       { color: #06A806;}
+a.link3:hover,
+a.link3:focus         { color: rgba(41, 129, 241, 0.78); }
+
+
+#spaghetti-plate
+{
+    color: rgba(41, 129, 241, 0.78);
+    cursor: pointer;
+    cursor: hand;
+}
+
+#spaghetti
+{
+    z-index=1000;
+    position:absolute;
+    display:none;
+    height:30%;
+    max-height:150px;
+    max-width:150px;
+    opacity: 0.9;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.57);
+}
+
+#sh-fanks
+{
+    position:relative;
+    height:41px;
+    padding-top:5px;
+}
+
+#sh-fanks1
+{
+    z-index:1;
+    position:absolute;
+    top:5px;
+    left:37px;
+
+    font-family: Consolas,"Bitstream Vera Sans Mono","Courier New",Courier,monospace!important;
+    font-weight: 400!important;
+    font-style: normal!important;
+}
+
+#sh-fanks2
+{
+    position:absolute;
+    top:-2px;
+    margin:0;
+    min-height:20px;
+    min-width:100px;
+    width:100%;
+    height:35px;
+}
+
+#sh-fanks2 .syntaxhighlighter
+{
+    padding:0!important;
+    padding-top:11px!important;
+}
+
+em.c1  { color: #96A9BB;}
+em.c2  { color: #98F112;}
+em.c3  { color: #EC930D;}
+em.c4  { color: #9558F0;}
+em.c4h { color: #6D72EC; font-weight: bold;}
+em.c5  { color: inherit;}
+em.c5h { color: #fff;}
+
+a.a-fanks
+{
+    text-decoration:none;
+    cursor: pointer;
+    cursor: hand;
+}
+
+/*--------------------------------------------------------
+ * genral grid-related css
+ * ------------------------------------------------------*/
+
+#tardis
+{
+    width:0;
+    height:0;
+    overflow: hidden;
+}
+
+
+
+/*--- filter UI etc --------------------------*/
+
+#settings-row       { height:90px;  }
+#settings-cell      { height:90px;  }
+#settings-filter    { }
+#settings-ex-filter { }
+
+.settings-filter-ctr
+{
+    margin:0 auto;
+    border:1px solid #19264E;
+    width:300px;
+    height:85px;
+    background-color: rgba(22, 22, 128, 0.1);
+}
+.settings-filter-ctr table                 {margin:0 auto; width:300px}
+.settings-filter-ctr tr                    {height:40px;}
+.settings-filter-ctr td                    {font-size:12px; color:#2595FD;}
+.settings-filter-ctr td.label              {text-align:right;}
+.settings-filter-ctr td span               {width:60px; padding-right:5px;}
+.settings-filter-ctr td input[type=range]  {vertical-align:middle; width:100px;}
+.settings-filter-ctr td input[type=number] {width:50px;}
+
+
+
+/*--- ex6 logger UI --------------------------*/
+
+#ctr-caching
+{
+    margin:0 auto;
+    text-align:center;
+    padding:0;
+}
+
+#ctr-caching > div
+{
+    display:inline-block;
+    margin:0 auto;
+    padding:0;
+    margin-bottom: 5px;
+}
+
+#settings-ex-caching
+{
+    padding-top:3px;
+    padding-bottom:3px;
+    width:350px;
+}
+
+#settings-ctr-logging { }
+
+#logit
+{
+    position:relative;
+    top:0;
+    left:0;
+    height:88px;
+    width:350px;
+    margin:0;
+    padding:0;
+    border:1px solid #19264E;
+    background-color: rgba(22, 22, 128, 0.1);
+    padding-top:3px;
+}
+
+#log
+{
+    position: absolute;
+    top:0;
+    left:0;
+    overflow-y: scroll;
+    font-size:10px;
+    text-align:left;
+    margin-left:2%;
+    height:100%;
+    width:98%;
+    font-family: 'whiterabbit';
+    color: #2595FD;
+}
+
+.log-padding
+{
+    position: absolute;
+    height:4px;
+    width:90%;
+    background-color: rgba(9, 9, 44, 0.74);
+}
+#log-padding-bottom{bottom:0px;}
+#log-padding-top {top:0px;}
+
+#log-control
+{
+    position:absolute;
+    top:0px;
+    left:285px;
+    height:20px;
+    padding-right:2px;
+    background-color: rgba(131, 136, 139, 0.13);
+}
+
+
+/*--- expand/collapse UI --------------------------*/
+
+.toggle
+{
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+}
+.toggle.expand
+{
+    background: url(expand.gif) no-repeat center center;
+}
+
+.toggle.collapse
+{
+    background: url(collapse.gif) no-repeat center center;
+}
+
+
+
+/*--- grids ---------------------------------------------*/
+
+.responsive-grid
+{
+    margin: 0 auto;
+    font-size:0.8em;
+
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    background-color:#ECEEE9;
+}
+
+#oh-my-griddy-aunt
+{
+    margin: auto;
+    font-size:0.8em;
+
+    position:absolute;
+    top:15px;
+    left:25%;
+    bottom:15px;
+    right:25%;
+    max-width:600px;
+    background-color:#ECEEE9;
+}
+
+#grid-simple                  { }
+#grid-noresize-no-postrender  { }
+#grid-resize-no-postrender    { }
+#grid-resize-postrender       { }
+#grid-sort                    { }
+#grid-filter                  { }
+#grid-caching                 { }
+
+/*--- generic slickgrid padding pollyfill  ----------------------*/
+
+.dynamic-row { padding-bottom: 1px!important; }
+
+.slick-cell.active
+{
+    border-color: transparent;
+    border-right: 1px dotted silver;
+    border-bottom: 1px solid silver;
+}
+
+.dynamic-row-padding { }
+
+.dynamic-row-padding-inner { border-bottom: none; }
+
+.dynamic-row-padding-inner div.slick-cell { border-bottom: none; }
+
+.dynamic-row-padding-last { }
+
+.dynamic-row-parent { }
+
+.dynamic-row-parent div.slick-cell { border-bottom: none; }
+
+div.dynamic-row-yin  { background: #fff!important; }
+
+div.dynamic-row-yang { background:   #FAFAFA!important; }
+
+
+.dynamic-cell
+{
+    z-index:      1       !important;
+    overflow:     visible !important;
+    padding:      0px     !important;
+    margin-left:  -2px    !important;
+    margin-top:   1px     !important;
+    height:       100%    !important;
+}
+
+.dynamic-cell > :first-child
+{
+    overflow: hidden!important;
+    text-overflow: ellipsis!important;
+    margin-top: 0px;
+    padding-left: 5px;
+    padding-right: 4px;
+}
+
+
+/*--- custom cell detail simple panel --------------------------*/
+
+.dynamic-cell-detail-simple
+{
+    z-index: 10000;
+    position:absolute;
+    background-color:#F4DFFA;
+    margin:0;
+    padding:0;
+    width:100%;
+    display: table;
+}
+
+.dynamic-cell-detail-simple > :first-child
+{
+    display: table-cell;
+    vertical-align:middle;
+    text-align:center;
+    font-size:12px;
+    line-height:13px;
+
+}
+
+
+/*--- custom cell detail no resize, no postrender ------------*/
+
+.dynamic-cell-detail-no-resize
+{
+    background-color:rgba(199, 48, 236, 0.17);
+    margin:0;
+    padding:0;
+    width:100%;
+    display: table;
+}
+
+.dynamic-cell-detail-no-resize > :first-child
+{
+    display: table-cell;
+    vertical-align:middle;
+    padding-left:10px;
+    font-size:12px;
+    line-height:13px;
+}
+
+/*--- custom cell detail ex1-4  -----------------------------*/
+
+.dynamic-cell-detail
+{
+    margin:0;
+    padding:0;
+    width:100%;
+}
+
+.dynamic-cell-detail svg
+{
+    width:100%;
+    height:100%;
+}
+
+
+
+/*--- custom cell detail, landing-page example ----------------*/
+
+.dynamic-cell-detail-calls
+{
+    background-color:rgba(199, 48, 236, 0.08);
+    margin:0;
+    padding:0;
+    width:100%;
+    display: table;
+    table-layout: fixed;
+}
+
+.dynamic-cell-detail-calls > :first-child
+{
+    display: table-cell;
+    vertical-align:middle;
+    padding-left:7px;
+    font-size:0.9em;
+    line-height:1.7em;
+    white-space: nowrap;
+}
+
+.dynamic-cell-detail-calls > :first-child div,
+.dynamic-cell-detail-calls > :first-child span
+{
+    overflow: hidden!important;
+    text-overflow: ellipsis!important;
+    padding-bottom:1px;
+}
+
+
+/*--- end  -----------------------------*/
+
+
+

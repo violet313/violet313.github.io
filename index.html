@@ -1,1 +1,954 @@
-oooOk ooOok
+<html>
+
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>SlickGrid woohooo ~dynamic row heights</title>
+
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/Celebio/SlickGrid/master/lib/jquery.event.drag-2.2.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/Celebio/SlickGrid/master/slick.core.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/Celebio/SlickGrid/master/slick.grid.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/Celebio/SlickGrid/master/slick.dataview.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/kvz/phpjs/master/functions/strings/get_html_translation_table.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/kvz/phpjs/master/functions/strings/htmlentities.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shCore.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushCss.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/scripts/shBrushXml.js"></script>
+
+
+
+
+    <script type="text/javascript" src="./assets/slickgrid.dyno.js"></script>
+    <script type="text/javascript" src="./assets/ModSlickgridSplash.js"></script>
+    <script type="text/javascript" src="./assets/ModSlickgridSimple.js"></script>
+    <script type="text/javascript" src="./assets/ModSlickgridEx1.js"></script>
+    <script type="text/javascript" src="./assets/ModSlickgridEx2.js"></script>
+    <script type="text/javascript" src="./assets/ModSlickgridEx3.js"></script>
+    <script type="text/javascript" src="./assets/ModSlickgridEx4.js"></script>
+    <script type="text/javascript" src="./assets/ModSlickgridEx5.js"></script>
+    <script type="text/javascript" src="./assets/ModSlickgridEx5a.js"></script>
+    <script type="text/javascript" src="./assets/ModSlickgridEx6.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shCore.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/SyntaxHighlighter/3.0.83/styles/shThemeMidnight.css">
+
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Celebio/SlickGrid/master/slick.grid.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Celebio/SlickGrid/master/slick-default-theme.css">
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+
+
+    <link rel="stylesheet" type="text/css" href="./assets/slickgrid.dyno.css">
+
+  </head>
+
+
+
+  <body>
+
+    <div id="tardis" style="position:absolute; visibility:hidden">
+      <div id="tmpl-smartee">
+        <svg  viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+          <title>smarteee</title>
+          <defs>
+            <radialGradient cx="25%" cy="25%" r="100%" fx="40%" fy="40%"></radialGradient>
+          </defs>
+          <circle  class="face"          cx="200" cy="200" r="195"  />
+          <ellipse class="eye eye-left"  cx="140" cy="150" rx="10" ry="40" fill="black"/>
+          <ellipse class="eye eye-right" cx="260" cy="150" rx="10" ry="40" fill="black"/>
+          <path    class="smile"         stroke-width="10" stroke="black" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+
+    <noscript>
+      <div id="uh-oh" class="whiterabbit">
+        <div>
+          <div>..Um..</div>
+          <div>This page relies almost entirely on <span>javascript</span> !</div>
+          <div>..so sry..</div>
+        </div>
+      </div>
+    </noscript>
+
+
+    <div id="splash" style="display: none">
+
+      <div class="stuff-row">
+        <div id="blurb" class="stuff-cell">
+        <h2>Wooohoo! a responsive <a class="link1" href="https://github.com/mleibman/SlickGrid" target="_blank">slickgrid</a> with dynamic row-heights</h2>
+          <p>
+            <strong>TODO:</strong> bung this all in a git repo etal... <span id="show-details"> meanwhile click here for the craft...</span>
+          </p>
+          <p class="blurb-details whiterabbit">
+            have all the fun with it ;)
+          </p>
+          <br/>
+        </div>
+      </div>
+
+      <div id="settings-row" class="stuff-row">
+        <div id="settings-cell" class="stuff-cell">
+          <div id="settings-splash" class="settings-filter-ctr">
+            <table>
+              <tr>
+                <td class="label"><span>Filter Min</span></td>
+                <td><input type='number' min='0' max='100' value='0'/></td>
+                <td><input type="range"  min="0" max="100" value='0'/></td>
+              </tr>
+              <tr>
+                <td class="label"><span>Filter Max</span></td>
+                <td><input type='number' min='0' max='100' value='100'/></td>
+                <td><input type="range"  min="0" max="100" value='100'/>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="stuff-row">
+        <div class="stuff-cell">
+          <div id="grid-ctr">
+            <div id="oh-my-griddy-aunt"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div id="code-steps" style="display: none">
+
+      <br/>
+      <div id="intro" class="section">
+        <ul class="nav">
+          <li class="nav-item skullie">☠</li>
+          <li class="nav-item content"><a class="section-anchor" href="#page-contents">&#x2630;</a></li>
+        </ul>
+        <div class="navbar"></div>
+        <div class="explain">
+          <h2><a class="section-anchor" href="#intro">proof of concept</a></h2>
+<div class="navbar"></div>
+<br>
+          <br/>
+          Imo the <a class="link0" href="https://github.com/mleibman/SlickGrid/wiki/Slick.Grid" target="_blank">Slickgrid jQuery plugin</a>
+          has near ubiquitous application, given that so many sites involve presenting data, <i>&nicely,,</i>
+          But because the model is thin (which is a good thing) some folk seem to go in search of other options
+          when it does not meet their exact requirements.
+          <p>
+          The <b>Slickgrid</b> API provides all that we need in order to create dynamically sizing row-heights
+          and all without any need to hack on the <b>Slickgrid</b> codebase. Because:
+          </p>
+
+          <ul>
+            <li> we can add/remove rows dynamically;</li>
+            <li> we can dynamically apply custom <b>css</b> at row & cell level.</li>
+          </ul>
+        </div>
+
+        <div class="explain">
+          If you suffer from <b>tldRitis</b> or happen to think that code <i>is</i> the documentation then you
+          might as well just go straight <a class="link1 section-anchor" href="#step-4">here</a>.
+          Otherwise or out of curiosity, do peruse the full low-down on the voodoos..
+        </div>
+
+        <div class="explain">
+          <br/>
+          First, a simple demo to get things started. Each time a row is expanded, a random amount of detail gets generated.
+          Correspondingly, each time the row is collapsed, the detail is removed:
+          <div class="grid-block"><div id="grid-simple" class="responsive-grid"></div></div>
+        </div>
+
+        <br/>
+        <div class="explain">
+          Incidentally, this is the kind of approach that the also excellent
+          <a class="link0" href="https://www.datatables.net/examples/api/row_details.html" target="_blank">DataTables</a>
+          provides pretty much natively through its API. &imo is quite neat. But what i'm presenting here is (to borrow a term) a kind of
+          <b>Slickgrid</b> <i>pollyfill</i> and works by:
+          <ul class="numered-list">
+            <li>Adding a bunch of dummy <i>padding</i> rows;
+            <li>Providing a static column
+                <a class="link3" href="https://github.com/mleibman/SlickGrid/wiki/Column-Options" target="_blank">formatter</a>
+                callback: <code>onRenderIDCell</code> and using this to overlay the padding with a detail panel.
+          </ul>
+        </div>
+
+        <div class="explain">
+          Here's the <code>onRowClick</code> event handler with the codes for adding and removing the padding rows highlighted:<br/>
+          <div id="code-block-simple-snip-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          so far so good ..buuut, this implementation <i>does happen to involve</i> a slight hack in order to inject
+          our detail panel into the <code>slick-row</code>.. here's all the codes with the relevant sections highlighted:<br/>
+          <div id="code-block-simple-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          & here's the relevant <b>css</b>:<br/>
+          <div id="code-block-simple-css" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          Well in any case that's less than 200 lines of customisation codes so.. <code>w00t</code><br/>
+          <a class="link2" href="http://jsfiddle.net/violet313/98wx61uz/" target="_blank">fiddle with it!</a>
+        </div>
+
+        <div id="page-contents" class="explain">
+          Now. To do dynamic row-heights <i>per cell</i>, we employ similar trickery
+          but we must also deal with a few side-effects along the way.
+          I have broken this down into the following sections:
+          <ul>
+            <li><a class="link1 section-anchor" href="#step-1">styling away the row divisions</a></li>
+            <li><a class="link1 section-anchor" href="#step-2">moving and resizing columns</a></li>
+            <li><a class="link1 section-anchor" href="#step-3">sorting columns</a></li>
+            <li><a class="link1 section-anchor" href="#step-4">filtering rows</a></li>
+            <li><a class="link1 section-anchor" href="#step-5">post rendering</a></li>
+            <li><a class="link1 section-anchor" href="#step-6">further optimisations</a></li>
+            <li><a class="link1 section-anchor" href="#step-7">front-page example</a></li>
+          </ul>
+
+          And you should of course be interested in reading these:
+          <ul>
+            <li><a class="link1 section-anchor" href="#caveats">caveats</a></li>
+            <li><a class="link1 section-anchor" href="#fanks">biG Fanks</a></li>
+          </ul>
+
+        </div>
+      </div>
+
+      <br/>
+      <div id="step-1" class="section">
+        <ul class="nav">
+          <li class="nav-item skullie">&#x2620;</li>
+          <li class="nav-item content"><a class="section-anchor" href="#page-contents">&#x2630;</a></li>
+          <li class="nav-item pagetop"><a class="section-anchor" href="#intro">&#8984;</a></li>
+        </ul>
+        <div class="navbar"></div>
+
+        <div class="explain">
+          <h2><a class="section-anchor" href="#step-1">styling away the row divisions</a></h2>
+<div class="navbar"></div>
+<br>
+          <br/>
+          we must:
+          <ul>
+            <li>remove row borders</li>
+            <li>remove unwanted row stripeyness</li>
+            <li>escape the per cell overflow clipping</li>
+          </ul>
+        </div>
+
+        <div class="explain">
+          Here is what it looks like. Each time a row is expanded, a random amount of detail gets generated
+          <i>only in a specific cell</i>.
+          Correspondingly, each time the row is collapsed, the detail and the padding rows are removed.
+          <div class="grid-block"><div id="grid-noresize-no-postrender" class="responsive-grid"></div></div>
+        </div>
+
+        <br/>
+        <div class="explain">
+          To style away the unwanted row artifacts, the <b>Slickgrid</b> API provides row-based styling via the
+          <a class="link3" href="https://github.com/mleibman/SlickGrid/wiki/Providing-data-to-the-grid#item-metadata" target="_blank">
+            Grid.getItemMetadata
+          </a>
+          callback interface. But because i'm making use of the <b>DataView</b>, the <code>DataView.getItemMetadata</code>
+          default implementation (which is to do nothing) must be overridden.
+          <div class="code-block">
+            <pre class="sh-inline-js first-line: 233;">_dataView.getItemMetadata=onRenderRow; //override the dataview callback with our own</pre>
+          </div>
+          <br/>
+          Here is the callback implemenation:
+          <div id="code-block-no-resize-no-postrender-snip-js" class="code-block"></div>
+
+          <br/>
+          And here is the <b>css</b>:
+          <div id="code-block-no-resize-no-postrender-css" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          Notice on <em>line <i>152</i></em> in the <code>onRenderRow</code> callback that i am providing another callback: <code>onRenderDetailCell</code>.
+          This is like the <code>onRenderIDCell</code> <i>column</i> formatter but works <i>per cell</i> & can be provided in the run-time.
+          We at least need to use this callback in order to dynamically set the new height of the detail cell.
+          But i am also wrapping the detail in a custom container to provide a further styling opportunity for our cell content.
+        </div>
+
+        <div class="explain">
+          Notice also on <em>lines <i>148-150</i></em>, we invoke the <b>Slickgrid</b>
+          <a class="link3"  href="https://github.com/mleibman/SlickGrid/wiki/Slick.Grid#wiki-setCellCssStyles" target="_blank">
+          Grid.setCellCssStyles
+          </a>
+          API to add a <code>dynamic-cell</code> class that sets the <code>overflow</code>
+          to <code>visible</code> in order to style away the per cell overflow clipping.
+          I'm doing this stuff in here instead of say, the <code>onRowClick</code> handler because <b>Slickgrid</b> maps
+          the <b>css</b> to a <i>fixed</i> row number. Which is a bit strange.
+          It means that if rows are added or removed the style <i>slips away</i> from the row it was originally applied to.
+          <p>
+          We only want the <b>css</b> applied to expanded parent rows; if the row is padding or a collapsed parent, it needs to be removed.
+          Therefore on <em>lines <i>127 & 156</i></em> we invoke the
+          <a class="link3" href="https://github.com/mleibman/SlickGrid/wiki/Slick.Grid#wiki-setCellCssStyles" target="_blank">
+          Grid.removeCellCssStyles
+          </a>
+          API to get rid of the unwanted <code>dynamic-cell</code> class, if it happens to exist for that row.
+          </p>
+
+          <p class="side-note">
+          NB: beware! attempting calls to <code>addCellCssStyles</code>, <code>removeCellCssStyles</code> (or
+          <a class="link3" href="https://github.com/mleibman/SlickGrid/wiki/Slick.Grid#wiki-getCellNode" target="_blank">getCellNode</a>)
+          when a row does not exist (ie: it's disappeared out of the viewport) can cause <b>Slickgrid</b> to bork :(
+          </p>
+        </div>
+
+        <div class="explain">
+          Here is the entire code module with the relevant sections highlighted:
+          <div id="code-block-no-resize-no-postrender-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          That's still only 250 lines of customisation and better yet, <code>zero</code> underhanded hax ;)<br/>
+          <a class="link2" href="http://jsfiddle.net/violet313/saggve98/" target="_blank">fiddle with it!</a>
+        </div>
+
+      </div>
+
+
+      <br/>
+      <div id="step-2" class="section">
+        <ul class="nav">
+          <li class="nav-item skullie">&#x2620;</li>
+          <li class="nav-item content"><a class="section-anchor" href="#page-contents">&#x2630;</a></li>
+          <li class="nav-item pagetop"><a class="section-anchor" href="#intro">&#8984;</a></li>
+        </ul>
+        <div class="navbar"></div>
+
+        <div class="explain">
+          <h2><a class="section-anchor" href="#step-2">moving and resizing columns</a></h2>
+<div class="navbar"></div>
+<br>
+          <br/>
+          In the preceding examples it is in fact already possible to move and resize the columns.
+          But we are using some non-responsive detail content. In this next example the detail content <i>responds</i>
+          to a change in cell-width. Padding rows are dynamically added and removed accordingly.
+          <div class="grid-block"><div id="grid-resize-no-postrender" class="responsive-grid"></div></div>
+        </div>
+
+        <br/>
+        <div class="explain">
+          Moving columns is easy. all we need to do is ensure never to directly reference column indices:
+          <div class="code-block">
+            <pre class="sh-inline-js first-line: 39;">
+              var getIdxDetailCol=function() {return _grid.getColumnIndex(_attribs.exampleDetailField);}
+            </pre>
+          </div>
+        </div>
+
+        <div class="explain">
+          <br/>
+          <i>Responsive</i> resizing requires some work.
+        </div>
+
+        <div class="explain">
+          We need to re-factor the codes by creating a couple of functions for adding and removing padding rows.
+          <div id="code-block-resize-no-postrender-snip1-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          <br/>
+          Also, we've abstracted the height calculation out of the <code>kookupDynamicContent</code> content generating function.
+          <div id="code-block-resize-no-postrender-snip3-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          <br/>
+          And now we can implement a handler for the <b>Slickgrid</b>
+          <a class="link3" href="https://github.com/mleibman/SlickGrid/wiki/Grid-Events" target="_blank">Grid.onColumnsResized</a>
+          event:
+          <div id="code-block-resize-no-postrender-snip2-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          <br/>
+          Here is the entire code module with the relevant sections highlighted:
+          <div id="code-block-resize-no-postrender-js" class="code-block"></div>
+          Juuust sneaking in there at under 400 lines..<br/>
+          <a class="link2" href="http://jsfiddle.net/violet313/28sqpa3h/" target="_blank">fiddle with it!</a>
+        </div>
+
+      </div>
+
+
+      <br/>
+      <div id="step-3" class="section">
+        <ul class="nav">
+          <li class="nav-item skullie">&#x2620;</li>
+          <li class="nav-item content"><a class="section-anchor" href="#page-contents">&#x2630;</a></li>
+          <li class="nav-item pagetop"><a class="section-anchor" href="#intro">&#8984;</a></li>
+        </ul>
+        <div class="navbar"></div>
+
+        <div class="explain">
+          <h2><a class="section-anchor" href="#step-3">sorting columns</a></h2>
+<div class="navbar"></div>
+<br>
+          <br/>
+          Some work to do here. but not all that much.
+          we must ensure that no matter whether we are sorting up or down, the padding remains contiguously
+          underneath the parent.
+          <br/><br/>
+          <div class="grid-block"><div id="grid-sort" class="responsive-grid"></div></div>
+        </div>
+
+        <div class="explain">
+          Here's the little monster all wrapped up in a closure:
+          <div id="code-block-resize-sort-snip-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          <p>
+            And that's about all there is to sorting.
+          </p>
+          All that remains to do is subscribe to the <b>Slickgrid</b>
+          <a class="link3" href="https://github.com/mleibman/SlickGrid/wiki/Grid-Events" target="_blank">Grid.onSort</a>
+          event and provide a handler:
+
+          <div class="code-block">
+            <pre class="sh-inline-js first-line: 184;">
+              //////////////////////////////////////////////////////////////
+              //delegate the sorting to DataView; which will sort the data using our
+              //comparer callback; fire appropriate change events and update the grid
+              //////////////////////////////////////////////////////////////
+              var sort=function() { _dataView.sort(comparer.compare, comparer.getSortAsc()); }
+
+              //////////////////////////////////////////////////////////////
+              //fired when the user clicks on a column header
+              //////////////////////////////////////////////////////////////
+              var onRowSort=function(e,args) {comparer.setInfos(args.sortCol, args.sortAsc); sort();}
+            </pre>
+          </div>
+          <p>
+            I also provide a wrapper for the call into the
+            <a class="link3" href="https://github.com/mleibman/SlickGrid/wiki/DataView#sorting" target="_blank">DataView.sort</a>.
+            In addition to being called from our <code>onRowSort</code> handler, this can also be invoked
+            anytime we feel like it; on initialisation, on a data update; whenever.
+          </p>
+          <br/>
+          Here is the entire code module with the relevant sections highlighted:
+          <div id="code-block-resize-sort-js" class="code-block"></div>
+          <a class="link2" href="http://jsfiddle.net/violet313/gwnzfLyr/" target="_blank">fiddle with it!</a>
+        </div>
+
+      </div>
+
+
+      <br/>
+      <div id="step-4" class="section">
+        <ul class="nav">
+          <li class="nav-item skullie">&#x2620;</li>
+          <li class="nav-item content"><a class="section-anchor" href="#page-contents">&#x2630;</a></li>
+          <li class="nav-item pagetop"><a class="section-anchor" href="#intro">&#8984;</a></li>
+        </ul>
+        <div class="navbar"></div>
+
+        <div class="explain">
+          <h2><a class="section-anchor" href="#step-4">filtering rows</a></h2>
+<div class="navbar"></div>
+<br>
+          <br/>
+          Well that's resizing and sorting in the bag. And happily, there's not much to filtering
+          beyond a typical amount of customisation that might ordinarily be expected.
+        </div>
+        <br/>
+        <div class="explain">
+          <div id="settings-ex-filter" class="settings-filter-ctr">
+            <table>
+              <tr>
+                <td class="label"><span>Filter Min</span></td>
+                <td><input type='number' min='0' max='100' value='0'/></td>
+                <td><input type="range"  min="0" max="100" value='0'/></td>
+              </tr>
+              <tr>
+                <td class="label"><span>Filter Max</span></td>
+                <td><input type='number' min='0' max='100' value='100'/></td>
+                <td><input type="range"  min="0" max="100" value='100'/>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="grid-block">
+            <div id="grid-filter" class="responsive-grid"></div>
+          </div>
+        </div>
+
+        <div class="explain">
+          Here's the enclosured filter. Most of the code is to do with the UI and might be required in any case.
+          The actual filter is a one-liner; if the row is padding we just get the value we're filtering
+          on from it's parent. Really simple.
+          <div id="code-block-resize-sort-filter-snip-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          Here's the implementation of the <code>onFilter</code> callback we provide to the
+          <a class="link3" href="https://github.com/mleibman/SlickGrid/blob/master/slick.dataview.js" target="_blank">DataView.setFilter</a> API:
+          <div class="code-block">
+            <pre class="sh-inline-js first-line: 239;">
+              var onFilter=function(item) { return pcFilter.onFilter(item); }
+            </pre>
+          </div>
+        </div>
+
+        <div class="explain">
+          Here's all the codes:
+          <div id="code-block-resize-sort-filter-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          Here's all the <b>css</b>:
+          <div id="code-block-resize-sort-filter-css" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          And for completeness sake, here's the <b>html</b>:
+          <div id="code-block-resize-sort-filter-html" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          Having removed the test-data-kooker ~which is only fair~ that's all the basics: resizing, sorting & filtering in
+          <i>under</i> 500 lines of fairly legible, liberally commented custom javascripts..  <code>acu</code><br/>
+          <a class="link2" href="http://jsfiddle.net/violet313/y16z42dp/" target="_blank">fiddle with it!</a>
+        </div>
+
+        <div class="explain">
+          <p>
+            Now. As can be seen in the last three examples, i'm cooking up some funky on-the-fly <b>svg</b>.
+            which is <b>xml</b> & not very <b>jQuery</b> friendly.
+            & it's a bit of an overhead to get the <b>html</b> string for the <b>Slickgrid</b> cell render.
+          </p>
+          <p>
+            And it's slightly vexing to keep adding & removing the <code>dynamic-cell</code> <b>css</b> class all over the place.
+          </p>
+          <p>
+            All of which, i'm going to use as justification for something that not only makes life easier; but
+            also provides an option for some optimisation..
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <br/>
+      <div id="step-5" class="section">
+        <ul class="nav">
+          <li class="nav-item skullie">&#x2620;</li>
+          <li class="nav-item content"><a class="section-anchor" href="#page-contents">&#x2630;</a></li>
+          <li class="nav-item pagetop"><a class="section-anchor" href="#intro">&#8984;</a></li>
+        </ul>
+        <div class="navbar"></div>
+
+        <div class="explain">
+          <h2><a class="section-anchor" href="#step-5">post rendering</a></h2>
+<div class="navbar"></div>
+<br>
+          <br/>
+          All the row and cell formatter callbacks that i've used so far get invoked <i>prior</i>
+          to <b>Slickgrid</b> rendering the row.
+          it would be nice if we could do stuff on a <i>post-render event</i>. The <code>Slick.Grid.</code> API does provide an
+          <code>asyncPostRender</code>
+          <a class="link0" href="https://github.com/mleibman/SlickGrid/wiki/Column-Options" target="_blank">column option</a>
+          where we can supply an event handler. But the event fires on a <code>setTimeout</code>
+          (; perhaps
+          <a class="link1" href="http://stackoverflow.com/users/307994/tin" target="_blank">@Tin</a>
+          was trying to cut-down on the
+          <span id="spaghetti-plate">
+            event-hell
+            <img id="spaghetti" src="./assets/eventhell.jpg"/>
+          </span>;)
+          and even with a timeout of <em>zero</em> it is wayyy laggy for our purposes.
+          <p/>
+          Never mind. There are alternatives:
+        </div>
+        <div class="explain">
+          <br/>
+          <h3 id="step-5-mutants"><a class="section-anchor" href="#step-5-mutants">option #1 MutationObservers</a></h3>
+          <p>
+          With a <a class="link2" href="http://caniuse.com/mutationobserver" target="_blank">caniuseit</a>
+          rating of 83% (figure will rot for the better) we can instead use a
+          <a class="link3" href="https://developer.mozilla.org/en/docs/Web/API/MutationObserver" target="_blank">MutationObserver</a>
+          to generate custom post-render events:
+          </p>
+          <br/>
+          <div id="settings-ex-postrender" class="settings-filter-ctr">
+            <table>
+              <tr>
+                <td class="label"><span>Filter Min</span></td>
+                <td><input type='number' min='0' max='100' value='0'/></td>
+                <td><input type="range"  min="0" max="100" value='0'/></td>
+              </tr>
+              <tr>
+                <td class="label"><span>Filter Max</span></td>
+                <td><input type='number' min='0' max='100' value='100'/></td>
+                <td><input type="range"  min="0" max="100" value='100'/>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="grid-block"><div id="grid-resize-postrender" class="responsive-grid"></div></div>
+        </div>
+
+        <div class="explain">
+          Notice the difference?
+        </div>
+
+        <div class="explain">
+          ~Well hopefully not. But here's what changed in the codes.
+          Firstly the <code>MutationObserver</code>:
+          <div id="code-block-postrender-snip1-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          <br/>
+          We set it up to watch the
+          <a class="link3" href="https://github.com/mleibman/SlickGrid/wiki/Slick.Grid#wiki-getCanvasNode" target="_blank">grid canvas</a>
+          and fire events when elements with a <code>slick-row</code> <b>css</b> class get added:
+          <div class="code-block">
+            <pre class="sh-inline-js first-line: 502;">
+              internationalObserver(_grid.getCanvasNode(), _attribs.slickRow, onAddRow);
+            </pre>
+          </div>
+        </div>
+
+        <div class="explain">
+          <br/>
+          Then in our <code>onRenderDetailCell</code> formatter callback, instead of supplying the detail as a raw <b>html</b> string like before;
+          we now add a container element with an <code>id</code> that identifies the item/row and the column and we give it a <b>css</b> class
+          name of <code>dynamic-cell-detail-ctr</code> which we will use merely as a selector.
+          <div id="code-block-postrender-snip2-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          <br/>
+          Here's the <code>onAddRow</code> event handler that gets fired by the <code>MutationObserver</code>. This in turn fires
+          our <code>onPostRender</code> handler for any cells in the row that have been marked
+          with the <code>dynamic-cell-detail-ctr</code> class:
+          <div class="code-block">
+            <pre class="sh-inline-js first-line: 274;">
+              var onAddRow=function(row){$(_attribs.classSelector("cellDetailCtr"), row).each(onPostRender)}
+            </pre>
+          </div>
+        </div>
+
+        <div class="explain">
+          <br/>
+          And here's the post-render event. This is now where we inject our detail into the <b>DOM</b>
+          and apply the <code>dynamic-cell</code> <b>css</b> class in order to escape the overflow-clipping
+          on the <code>slick-cell</code> container:
+          <div id="code-block-postrender-snip3-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          <br/>
+          Here's all the codes with the relevant sections highlighted:
+          <div id="code-block-postrender-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          Hang on tho we've just <i>exceeded</i> 500 lines of codes.. <code>ooops</code><br/>
+          <a class="link2" href="http://jsfiddle.net/violet313/3xrp6xwb/" target="_blank">fiddle with it!</a>
+        </div>
+
+        <div class="explain">
+          <br/>
+          Hmm, so apparently we have in fact <i>added</i> more new code than we have removed.
+          -What then exactly have we <i>gained</i> from the dozen or so extra codes ?
+        </div>
+
+        <div class="explain">
+          Well. Now we have a lot more control over our dynamic detail content. Here's some things we can do:
+          <ul>
+            <li>pre-build our content anytime we like; either on-the-fly or from a template;</li>
+            <li>easily calculate the contents' height requirements by putting it into some invisible space within the <b>DOM</b>;</li>
+            <li>manage our own content cache when slick rows go out of scope</li>
+          </ul>
+          And it is this last point that will be the subject of the <a class="link1 section-anchor" href="#step-6">next</a> section..
+          But before we get to that i will briefly discuss another option:
+        </div>
+
+        <br/>
+        <div class="explain">
+          <h3 id="step-5-onload"><a class="section-anchor" href="#step-5-onload">option #2 onLoad</a></h3>
+          <p>
+          Something that also seems to work as an alternative means of generating <code>onPostRender</code> events
+          is a bit of a hack involving inserting <i>dummy</i> <code>&lt;style&gt;</code> elements with an <code>onload</code> attribute.
+          </p>
+          <div class="grid-block"><div id="grid-resize-postrender-onload" class="responsive-grid"></div></div>
+        </div>
+
+        <div class="explain">
+          <p/>
+          Here's the changes in the <code>onRenderDetailCell</code> callback:
+          <div id="code-block-postrender-snip4-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          <p/>
+          The <code>onPostRender</code> function is almost the same as before only now the
+          <code>item.id</code> is provided directly as the first function argument:
+          <div id="code-block-postrender-snip5-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          <p>
+          This approach <i>may</i> have more cross-browser compatibility than <code>MuationObservers</code> & seems
+          to work ok in the latest versions of <b>Firefox</b>, <b>Safari</b> and <b>Chrome</b>.
+          But on <b>Chrome</b> there is a touch more latency. And in an older version of <b>Chrome</b> i
+          tried <i>(Version 20.0.1150.1/Linux)</i> it seemed to be generating garbage
+          that the <b>gc</b> was unable to retrieve.?. i'm not sure why. there are no circularities afaik.. :/
+          </p>
+          <a class="link2" href="http://jsfiddle.net/violet313/od1dc5da/" target="_blank">fiddle with it!</a>
+        </div>
+
+
+      </div>
+
+      <br/>
+      <div id="step-6" class="section">
+        <ul class="nav">
+          <li class="nav-item skullie">&#x2620;</li>
+          <li class="nav-item content"><a class="section-anchor" href="#page-contents">&#x2630;</a></li>
+          <li class="nav-item pagetop"><a class="section-anchor" href="#intro">&#8984;</a></li>
+        </ul>
+        <div class="navbar"></div>
+
+        <div class="explain">
+          <h2><a class="section-anchor" href="#step-6">further optimisations</a></h2>
+<div class="navbar"></div>
+<br>
+        </div>
+
+        <div class="explain">
+          <p>
+          Right-ho, so now we have millions of rows of data + a shed-load of padding. filtering is <em><strong>O(n)</strong></em> so that's not too bad.
+          but the standard <code>sort</code> implementation in the <b>DataView</b> is a <i>bubble-sort</i>; the worst-case complexity of
+          an unsorted list is <em><strong>O(n<sup>2</sup>)</strong></em>..
+          It would be nice *not to have to wade thro all the out-of-scope padding.
+          </p>
+          <p>
+          Well obviously, having expandable/collapsible rows helps to mitigate the issue. But suppose we don't want that feature?
+          -in that case, we can implement our own caching system. The following example is based on the previous example
+          but <i>reaps</i> out-of-scope padding beyond a certain threshold. And of course it revives the padding
+          as the expanded detail rows come back into scope.
+          </p>
+          <p>
+          I have chucked in a logger to highlight the process.
+          <span class="side-note">(; And for this reason the example still features expando-rows; so
+          there's not a total flood of messages ;)</span>
+          </p>
+          <br/>
+          <div id="ctr-caching">
+            <div id="settings-ctr-caching">
+              <div id="settings-ex-caching" class="settings-filter-ctr">
+                <table>
+                  <tr>
+                    <td class="label"><span>Filter Min</span></td>
+                    <td><input type='number' min='0' max='100' value='0'/></td>
+                    <td><input type="range"  min="0" max="100" value='0'/></td>
+                  </tr>
+                  <tr>
+                    <td class="label"><span>Filter Max</span></td>
+                    <td><input type='number' min='0' max='100' value='100'/></td>
+                    <td><input type="range"  min="0" max="100" value='100'/>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div id="settings-ctr-logging">
+              <div id="logit">
+                <div id="log"></div>
+                <div id="log-padding-top" class="log-padding"></div>
+                <div id="log-control">
+                  <input type="checkbox"><label>logit</label>
+                </div>
+                <div id="log-padding-bottom" class="log-padding"></div>
+              </div>
+            </div>
+          </div>
+          <div class="grid-block"><div id="grid-caching" class="responsive-grid"></div></div>
+        </div>
+
+        <div class="explain">
+          First, we extend the <code>MutationObserver</code> so that it additionally fires removed-row events:
+          <div id="code-block-postrender-cache-snip1-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          Then in the <code>onDetailRemoved</code> event-handler, we add the row-item to an internal list.
+          All padding rows within this list are going to remain cached:
+          <div id="code-block-postrender-cache-snip2-js" class="code-block"></div>
+        </div>
+
+
+        <div class="explain">
+          Next we implement an idle-events pump (; which we can also re-use in the filter ;) to generate
+          a bunch of <code>onSysIdle</code> events whenever the application is not up to much.
+          <div id="code-block-postrender-cache-snip3-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          Now we can implement functions to reap and revive padding rows that drift in & out of the
+          cache:
+          <div id="code-block-postrender-cache-snip4-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          <p>
+          In this example, the <code>revivePadding</code> function  gets invoked from
+          within the <code>onPostRender</code> event handler, once the row moves back onto the
+          <a class="link3" href="https://github.com/mleibman/SlickGrid/wiki/Slick.Grid#wiki-getCanvasNode" target="_blank">Slickgrid canvas</a>.
+          </p>
+          And the <code>reapPadding</code> function gets invoked by the <code>onSysIdle</code> event handler
+          <span class="side-note">[NB: this could be improved by only kicking-off idle-events in response to say the grid being scrolled].</span>
+
+        </div>
+
+
+        <div class="explain">
+          <br/>
+          Here's all the codes with the relevant sections highlighted:
+          <div id="code-block-postrender-cache-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          Incidentally, forget trying to use the <b>jQuery</b> <i>special</i> event stuff such as
+          <a class="link2" href="http://jsfiddle.net/72RTz/" target="_blank">the remove event</a>.
+          <a class="link1" href="https://github.com/mleibman" target="_blank">Mr.Leibman</a>
+          uses native <b>DOM</b> methods to create and destroy <b>Slickgrid</b> elements so that will not work here.
+          <p/>
+          <a class="link2" href="http://jsfiddle.net/violet313/t00w9hmw/" target="_blank">fiddle with it!</a>
+        </div>
+      </div>
+
+
+      <br/>
+      <div id="step-7" class="section">
+        <ul class="nav">
+          <li class="nav-item skullie">&#x2620;</li>
+          <li class="nav-item content"><a class="section-anchor" href="#page-contents">&#x2630;</a></li>
+          <li class="nav-item pagetop"><a class="section-anchor" href="#intro">&#8984;</a></li>
+        </ul>
+        <div class="navbar"></div>
+
+        <div class="explain">
+          <h2><a class="section-anchor" href="#step-7">front-page example</a></h2>
+          <br/>
+          Finally, a brief explanation of what's going on in the example on the <span class="nav-item skullie">Landing page</span>.
+          Since there are <i>not</i> 100Ks of records, it's not employing any caching but otherwise supports all the functionality
+          discussed so far.
+          <p>
+          The big (&hopefully) noticeable differences are that i have done away with the expandable rows feature
+          and i have made it so that there are <i>two</i> fields that contain dynamic cell detail content.
+          </p>
+          So this example really is a kind of place-holder for what needs to be done next
+          in order to make a generic <b>Dataview-like Slickgrid</b> <em>extension-mod</em>.
+        </div>
+
+        <div class="explain">
+          <br/>
+          Here's the codes with some notable sections highlighted:
+          <div id="code-block-splash-js" class="code-block"></div>
+        </div>
+
+        <div class="explain">
+          See on <em>lines <i>427-511</i></em>, i have replaced our old <code>kookupDynamicContent</code> function
+          with a couple of new functions: <code>setCallsContent</code> and <code>setStatusContent</code>,
+          which are specific to each dynamic field. These should be part of the <i>application</i> and *not inside
+          any <em>extension-mod</em>.
+          <p>
+          See also <em>lines <i>557-615</i></em>, where i have provided an API to <em>add/update/remove</em> data items.
+          So likely, it is in here that an <em>extension-mod</em> should instead invoke callback-handlers provided by the <i>application</i>
+          for the above custom <code>setters</code>.
+          </p>
+          <a class="link2" href="http://jsfiddle.net/violet313/9wLe4vmt/" target="_blank">fiddle with it!</a>
+        </div>
+
+      </div>
+
+
+      <br/>
+      <div id="caveats" class="section">
+        <ul class="nav">
+          <li class="nav-item skullie">&#x2620;</li>
+          <li class="nav-item content"><a class="section-anchor" href="#page-contents">&#x2630;</a></li>
+          <li class="nav-item pagetop"><a class="section-anchor" href="#intro">&#8984;</a></li>
+        </ul>
+        <div class="navbar"></div>
+
+        <div class="explain">
+          <h2><a class="section-anchor" href="#caveats">caveats</a></h2>
+            <br/>
+            I have only covered the basics. There is that whole <em>selectable/editable</em> aspect to <b>Slickgrid</b>
+            that i have not yet scratched. In my defence, i am part-way thro my own implementation of all this stuff
+            & this post already goes beyond the scope of my current project.
+          <p/>
+          Also:
+          <ul>
+            <li> example-code only; not production ready. <em>you have been warned</em> etc etc =)</li>
+            <li> examples seem to work in most modern browsers; i have /not/ tried with <b>iE</b>; <i>versions >= 11 might be ok..</i>  </li>
+            <li> since i've crammed everything onto one ginormous page, the grids here are somewhat sluggish. <i>use the jsfiddles if this is of concern.</i></li>
+          </ul>
+          </p>
+        </div>
+      </div>
+
+      <br/>
+      <div id="fanks" class="section">
+        <ul class="nav">
+          <li class="nav-item skullie">&#x2620;</li>
+          <li class="nav-item content"><a class="section-anchor" href="#page-contents">&#x2630;</a></li>
+          <li class="nav-item pagetop"><a class="section-anchor" href="#intro">&#8984;</a></li>
+        </ul>
+        <div class="navbar"></div>
+
+        <div class="explain">
+          <h2><a class="section-anchor" href="#fanks">biG fanks</a></h2>
+<div class="navbar"></div>
+<br>
+          <br/>
+          ..For providing the <em><i>pixie-dust</i></em>..
+          <p/>
+          Special thanks go out to:
+          <ul>
+            <li id="sh-fanks">
+              <a class="a-fanks" href="http://alexgorbatchev.com/SyntaxHighlighter/" target="_blank">
+                <span id="sh-fanks1">
+                  <em class="c1">var</em>
+                  <em class="c4">SyntaxHighlighter</em>
+                  <em class="c1">= {</em>
+                  <em class="c3">excellent:</em>
+                  <em class="c2">true</em>
+                  <em class="c1">}</em>
+                </span>
+                <div id="sh-fanks2" class="code-block"><pre class="sh-inline-js first-line:13; toolbar:true"></pre></div>
+              </a>
+            </li>
+            <li id="wr-fanks">
+              <a class="a-fanks" href="http://www.squaregear.net/fonts/" target="_blank">
+                <span class="whiterabbit">the very splendid <em class="c5">white rabbit</em> font</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <br/>
+      <br/>
+
+    </div>
+  </body>
+
+</html>
