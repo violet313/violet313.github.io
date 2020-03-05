@@ -136,7 +136,7 @@
 
         "resize-sort-filter-html":
         {
-            url:          "./resize.sort.filter.html",
+            url:          "./assets/resize.sort.filter.html",
             highlight:    [],
             brush:        "html",
         },
