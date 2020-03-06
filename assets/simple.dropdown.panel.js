@@ -48,7 +48,7 @@ function()
             //the row not the cell. nice =)  ~no need to apply a css change to the parent
             //slick-cell to escape the cell overflow clipping.
 
-            //sneaky extra </div> inserted here-----------------v
+            //sneaky extra </div> inserted here--------------v
             html.push("<div class='toggle collapse'></div></div>");
 
             html.push("<div class='dynamic-cell-detail' ");   //apply custom css to detail

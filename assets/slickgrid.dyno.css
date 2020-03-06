@@ -291,6 +291,13 @@ span.skullie:focus
     background-color: black !important;
 }
 
+.code-block i::before
+{
+    content:          "ooOok! failed to load content :/ try refreshing the page..";
+    padding:          3px;
+    color:            red;
+}
+
 .code-block .syntaxhighlighter
 {
     overflow:       visible!important;

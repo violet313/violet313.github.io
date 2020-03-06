@@ -285,10 +285,13 @@
         var nodeCodes=document.createElement("pre");
 
         if (nodeCtr==null || nodeCodes==null) alert("missing: " +id);
-
-        nodeCodes.innerHTML=strMod.replace(/[\n\r];[\n\r]+$/,"");
-        nodeCtr.appendChild(nodeCodes);
-        SyntaxHighlighter.highlight(_snippets[id], nodeCodes);
+        else
+        {
+            nodeCodes.innerHTML=strMod.replace(/[\n\r];[\n\r]+$/,"");
+            nodeCtr.removeChild(nodeCtr.childNodes[0]);
+            nodeCtr.appendChild(nodeCodes);
+            SyntaxHighlighter.highlight(_snippets[id], nodeCodes);
+        }
     }
 
     //////////////////////////////////////////////////////////////
@@ -299,13 +302,16 @@
 
     //////////////////////////////////////////////////////////////
     var _ajaxOpts={type:"GET", dataType:"text"};
-    for  (var key in _snippets)
+    var loadCodeExampleSnippets=function()
     {
-        _snippets[key].toolbar=false;
-        _ajaxOpts.success=getAjaxCallbackSuccess(key);
-        _ajaxOpts.url=_snippets[key].url;
-        $.ajax(_ajaxOpts);
-    }
+        for  (var key in _snippets)
+        {
+            _snippets[key].toolbar=false;
+            _ajaxOpts.success=getAjaxCallbackSuccess(key);
+            _ajaxOpts.url=_snippets[key].url;
+            $.ajax(_ajaxOpts);
+        }
+    };
 
     //////////////////////////////////////////////////////////////
     var _exampleMods=
@@ -380,6 +386,8 @@
     $(function()
     {
         _exampleMods.forEach(modRun);
+
+        loadCodeExampleSnippets();
 
         $(".sh-inline-js").each(function()  { SyntaxHighlighter.highlight({brush: "js",  toolbar: false}, this); });
         $(".sh-inline-css").each(function() { SyntaxHighlighter.highlight({brush: "css", toolbar: false}, this); });
