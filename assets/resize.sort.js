@@ -445,8 +445,17 @@ function()
         _dataView.setItems(_data);
         _dataView.endUpdate();
 
+        ////////////////////////////////////////////////////////////////////////////////////////
+        //lol. no longer *options* per 6pac breaking changes:
+        //slick.grid.js :
+        //L326: if (!options.suppressCssChangesOnHiddenInit) { cacheCssForHiddenInit(); }
+        //L331: options = $.extend({}, defaults, options);
+        //L326 should have been placed *after L331 where the *options* defaults are instantiated.
+        var gridOptions={ };
+        ////////////////////////////////////////////////////////////////////////////////////////
+
         //initialise the grid
-        _grid=new Slick.Grid(_attribs.idSelector("grid"), _dataView, _gridColumns);
+        _grid=new Slick.Grid(_attribs.idSelector("grid"), _dataView, _gridColumns, gridOptions);
         _grid.onColumnsResized.subscribe(onColumnsResized);
         _grid.onClick.subscribe(onRowClick);
         _grid.onSort.subscribe(onRowSort);

@@ -108,7 +108,7 @@ function()
     }
 
     //////////////////////////////////////////////////////////////
-    var gridOptions={ enableColumnReorder:  true };
+    var _gridOptions={ enableColumnReorder:  true };
 
     //////////////////////////////////////////////////////////////
     var _gridColumns=
@@ -182,7 +182,7 @@ function()
         _dataView.endUpdate();
 
         //initialise the grid
-        _grid=new Slick.Grid(_attribs.idSelector("grid"), _dataView, _gridColumns);
+        _grid=new Slick.Grid(_attribs.idSelector("grid"), _dataView, _gridColumns, _gridOptions);
         _grid.onClick.subscribe(onRowClick);
 
         //wire up model events to drive the grid per DataView requirements
